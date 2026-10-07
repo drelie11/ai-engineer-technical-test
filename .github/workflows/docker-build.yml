@@ -1,0 +1,30 @@
+name: CI Pipeline - Build Docker Image
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./coding_test/food_receipt_app
+          file: ./coding_test/food_receipt_app/Dockerfile
+          push: false
+          tags: receipt-app:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

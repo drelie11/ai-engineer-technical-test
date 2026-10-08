@@ -1,9 +1,9 @@
 import streamlit as st
 import os
 import tempfile
-from coding_test.food_receipt_app.extractor import extract_receipt
-from coding_test.food_receipt_app.database import insert_receipt
-from coding_test.food_receipt_app.agent import answer_user_query
+from extractor import extract_receipt
+from database import insert_receipt
+from agent import answer_user_query
 
 st.set_page_config(page_title="AI Receipt Tracker", layout="wide")
 st.title("AI Food Receipt Tracker")
